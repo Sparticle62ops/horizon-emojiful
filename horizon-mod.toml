@@ -1,0 +1,41 @@
+id = "emojiful_port"
+name = "Emojiful Port"
+version = "1.0.1"
+description = """Exact 1:1 Rust translation of [Emojiful](https://github.com/InnovativeOnlineIndustries/Emojiful)
+(upstream Java, MIT (c) 2022 Innovative Online Industries). Carries the upstream license and credit.
+
+Ported for the Horizon client by sparticle.
+
+Emoji resource packs, Twemoji and custom emoji sources load through the
+original pipeline (8 vanilla categories first, then custom packs from
+emojiful-assets, then Twemoji from iamcal/emoji-data with the :swear: alias
+and text emoticons), all indexed into the original's 9-slot selection rows.
+The emoji registry, regex matching, profanity filter and datapack-emoji flow
+are ported whole; the nine config toggles register as settings with the
+upstream lang labels and defaults, the string stays in config/emojiful.json.
+
+Known seams (engine-stage; tracked):
+- the font-renderer swap, emoji quad rendering and texture/GIF upload ride
+  the render seam until the mod API exposes a font hook (the scan logic is
+  ported and tested);
+- the chat-screen autocomplete, emoji selector and keybinds are unported;
+- the recipe-manager event holds the datapack flow's registry work.
+
+Pinned to Horizon f00125f61f794aaa3d4e950d301f353b35b6ee3d and
+horizon-mixins e59da9094f0c2fdda6c627fe9eff22dec6a906f0, mod api 0.2; exact
+1:1 Rust port tested against those revisions (12 tests).
+
+Licence: MIT (LICENSE.md carries the upstream text). Source:
+https://github.com/Sparticle62ops/horizon-emojiful
+"""
+authors = ["InnovativeOnlineIndustries", "sparticle"]
+license = "MIT"
+homepage = "https://github.com/Sparticle62ops/horizon-emojiful"
+api = "0.2"
+side = "client"
+capabilities = ["registries"]
+
+[native]
+game = "26.3"
+horizon = "f00125f61f794aaa3d4e950d301f353b35b6ee3d"
+mixins = "e59da9094f0c2fdda6c627fe9eff22dec6a906f0"
